@@ -1,0 +1,16 @@
+company_id,is_importer,product_mentions,mentioned_countries,activity_indicators,processed,has_financial_indicators,recent_activity
+1,True,"['компонент', 'дисплей', 'микросхема', 'процессор', 'электроника']","['тайвань', 'китай']",3,True,True,True
+2,False,['компонент'],[],0,True,False,False
+3,True,[],[],1,True,False,False
+4,False,[],[],1,True,True,False
+5,True,[],"['япония', 'германия']",1,True,True,False
+6,True,[],[],2,True,True,False
+7,False,[],[],1,True,False,False
+8,True,[],[],2,True,False,False
+9,False,[],[],0,True,True,False
+10,False,[],[],0,True,False,False
+11,False,[],[],2,True,False,True
+12,False,[],[],1,True,False,False
+13,False,[],[],0,True,True,False
+14,True,[],[],1,True,True,False
+15,False,[],[],0,True,False,False

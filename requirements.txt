@@ -1,0 +1,15 @@
+# Зависимости проекта: B2B Lead Generation System
+# Python >= 3.8
+
+# Обработка данных
+pandas>=2.0.0
+
+# NLP и обработка русского языка
+spacy>=3.5.0
+
+# UI для валидации
+streamlit>=1.28.0
+
+
+# ВАЖНО: После установки requirements.txt выполните:
+# python -m spacy download ru_core_news_sm
