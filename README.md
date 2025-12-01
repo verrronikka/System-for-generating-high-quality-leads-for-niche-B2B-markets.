@@ -36,24 +36,6 @@
 
 ---
 
-##  Структура проекта
-├── data/
-│ ├── raw/
-│ │ └── companies_demo.db # Демо-данные (ИНН, название, текст сайта)
-│ └── processed/
-│ ├── enriched_companies.db # Обогащённые признаки (ИИ)
-│ ├── validated.csv # Результаты ручной валидации
-│ ├── generated_emails.csv # Сгенерированные письма
-│ └── enrichment_report.json # Отчёт по обогащению
-├── scripts/
-│ ├── pipeline.py # Запуск NLP-обогащения
-│ └── email_composer.py # Генерация персонализированных писем
-├── app_validator.py # Streamlit-интерфейс для валидаторов
-├── enricher.py # Ядро NLP-анализа (spaCy)
-├── requirements.txt # Зависимости
-└── README.md
-
-
 ---
 
 ## Требования
@@ -65,7 +47,6 @@
 
 ## Быстрый старт
 
-1. **Создайте виртуальное окружение и установите зависимости:**
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # Linux/macOS
