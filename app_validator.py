@@ -14,8 +14,8 @@ def load_data():
     """Загружает и объединяет обогащённые и сырые данные о компаниях.
 
     Читает:
-    - обогащённые признаки из `enriched_companies.db` (колонка `company_id`);
-    - сырые данные из `companies_demo.db` (колонки `inn`, `name_short`, `news`).
+    - обогащённые признаки из enriched_companies.db (колонка company_id);
+    - сырые данные из companies_demo.db (колонки inn, name_short, news).
 
     Выполняет LEFT JOIN по `company_id = inn`.
 
@@ -42,7 +42,7 @@ def load_data():
 def load_validated():
     """Загружает результаты ручной валидации из CSV-файла.
 
-    Если файл не существует, возвращает пустой DataFrame с правильной структурой.
+    Если файл не существует, возвращает пустой DataFrame.
 
     Returns:
         pd.DataFrame: Таблица с колонками:
@@ -108,9 +108,9 @@ if __name__ == "__main__":
 
     Приложение позволяет:
     - Просматривать компании, обогащённые NLP-пайплайном.
-    - Видеть автоматически извлечённые признаки (импорт, продукция, страны и др.).
-    - Выполнять ручную валидацию: подтверждать, что компания — активный импортёр.
-    - Сохранять результаты в CSV для последующей генерации персонализированных писем.
+    - Видеть автоматически извлечённые признаки (импорт, продукция, страны...).
+    - Выполнять ручную валидацию: подтверждать, что компания активный импортёр.
+    - Сохранять результаты в CSV для последующей генерации писем.
 
     Использует данные из:
     - data/processed/enriched_companies.db
@@ -204,14 +204,16 @@ if __name__ == "__main__":
     st.divider()
     st.subheader("Ручная валидация")
 
-    existing_validation = validated[validated['company_id'] == selected_company_id]
+    existing_validation = validated[validated['company_id'] ==
+                                    selected_company_id]
 
     if len(existing_validation) > 0:
         st.info(f"{existing_validation.iloc[0]['validator_name']} "
                 f"выполнил валидацию "
                 f"{existing_validation.iloc[0]['validated_at']}")
 
-        st.write(f"Импорт: {existing_validation.iloc[0]['is_active_importer']}")
+        st.write(f"Импорт: "
+                 f"{existing_validation.iloc[0]['is_active_importer']}")
         st.write(f"Уверенность: {existing_validation.iloc[0]['confidence']}")
         st.write(f"Комментарий: {existing_validation.iloc[0]['comment']}")
 

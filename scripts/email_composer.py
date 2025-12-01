@@ -32,9 +32,9 @@ class EmailComposer:
             company_data (dict): Словарь с полями:
                 - 'name' (str, optional): Название компании.
                 - 'is_importer' (bool): Является ли импортёром.
-                - 'product_mentions' (str): Список продуктов в виде строки "[...]".
-                - 'mentioned_countries' (str): Список стран в виде строки "[...]".
-                - 'has_financial_indicators' (bool): Признак финансовой активности.
+                - 'product_mentions' (str): Список продуктов в виде "[...]".
+                - 'mentioned_countries' (str): Список стран в виде "[...]".
+                - 'has_financial_indicators' (bool): Финансовая активность.
                 - 'recent_activity' (bool): Признак недавней активности.
 
         Returns:
@@ -139,7 +139,7 @@ class EmailComposer:
             score (int): Уровень персонализации.
 
         Returns:
-            str: Полный текст письма (включая приветствие, ценность, CTA и подпись).
+            str: Текст письма, включая приветствие, ценность, CTA, подпись.
         """
         greeting = f"Здравствуйте, {company_name}!\n\n"
 
@@ -199,18 +199,18 @@ def generate_emails_batch(
         raw_sql_path='data/raw/companies_demo.db',
         output_path='data/processed/generated_emails.csv',
         only_validated=True):
-    """Генерирует персонализированные письма для компаний на основе обогащённых данных.
+    """Генерирует персонализированные письма на основе обогащённых данных.
 
-    Объединяет данные из enriched-БД, raw-БД и (опционально) валидированного CSV.
+    Объединяет данные enriched-БД, raw-БД и (опционально) валидированного CSV.
     Генерирует письма только для компаний, помеченных как активные импортёры,
     если only_validated=True.
 
     Args:
         enriched_sql_path (str): Путь к SQLite-файлу с обогащёнными данными.
         validated_csv_path (str): Путь к CSV с результатами валидации.
-        raw_sql_path (str): Путь к SQLite-файлу с сырыми данными (для названий).
+        raw_sql_path (str): Путь к SQLite-файлу с сырыми данными для названий.
         output_path (str): Путь для сохранения результата в CSV.
-        only_validated (bool): Если True — генерировать только для валидированных.
+        only_validated (bool): Если True - генерировать только валидированные.
 
     Returns:
         pd.DataFrame or None: DataFrame с письмами или None, если нет данных.
@@ -236,7 +236,8 @@ def generate_emails_batch(
             validated['is_active_importer'] == 'Да'
         ]['company_id'].astype(str).tolist()
 
-        enriched = enriched[enriched['company_id'].astype(str).isin(active_importers)]
+        enriched = enriched[
+            enriched['company_id'].astype(str).isin(active_importers)]
 
         print(f"Генерируем письма для {len(enriched)} валидированных компаний")
     else:

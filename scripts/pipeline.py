@@ -14,7 +14,7 @@ def run_pipeline(enricher_cls=CompanyEnricher):
     4. Сохраняет обогащённые признаки в новую SQLite-базу.
 
     Args:
-        enricher_cls (type): Класс обогатителя, реализующий метод `analyze(text, id)`.
+        enricher_cls (type): Класс обогатителя, реализующий `analyze(text, id)`
                              По умолчанию — `CompanyEnricher`.
 
     Returns:
@@ -75,7 +75,7 @@ def run_pipeline(enricher_cls=CompanyEnricher):
             results_df[col] = results_df[col].apply(
                 lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x
             )
-        
+
         results_df.to_sql("companies", conn2, if_exists="replace", index=False)
         conn2.close()
     except Exception as e:
